@@ -1,5 +1,6 @@
-<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>ทะเบียนน้องค่าย</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -78,12 +79,44 @@ input[type="file"] { display: none; }
 .fact .l { font-size: 12px; color: var(--mute); }
 .fact.hot { background: var(--inv-bg); color: var(--inv-fg); padding: 4px 12px 6px; }
 .fact.hot .l { color: var(--inv-fg); opacity: 0.8; }
-.houses { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px 20px; }
-.house { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 8px; font-size: 13px; }
-.house .bar { grid-column: 1 / -1; height: 4px; background: var(--line); }
-.house .bar i { display: block; height: 100%; background: var(--fg); }
-.house span:last-child { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
-.house span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sumL { display: grid; gap: 16px; min-width: 0; }
+.hero { border: 2px solid var(--fg); padding: 16px 22px 18px; }
+.hero-n { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 14px; font-family: var(--font-data); line-height: 1; font-variant-numeric: tabular-nums; }
+.hero-n b { font-size: clamp(72px, 13vw, 120px); font-weight: 500; letter-spacing: -0.02em; }
+.hero-n span { font-size: clamp(30px, 5vw, 52px); color: var(--mute); }
+.hero-l { font-size: 15px; margin-top: 8px; }
+.hbar { height: 6px; background: var(--line); margin-top: 12px; }
+.hbar i { display: block; height: 100%; background: var(--fg); }
+.facts .fact .sub { font-size: 11.5px; color: var(--mute); font-family: var(--font-data); }
+.houses { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; }
+.house { padding: 8px 12px 8px 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 2px 16px; color: var(--fg); }
+.house .hn { flex: 1 1 150px; min-width: 0; font-size: 18px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.house .hs { display: flex; gap: 6px 16px; font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+.house .m { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.15; }
+.house .m i { font-style: normal; font-family: var(--font-body); font-size: 12px; opacity: 0.75; }
+.house .m b { font-size: 22px; font-weight: 500; }
+.house .m b small { font-size: 14px; font-weight: 400; opacity: 0.7; }
+.house .m.z b { opacity: 0.35; }
+.house .hl { flex-basis: 100%; font-size: 12px; opacity: 0.8; font-family: var(--font-data); }
+/* สีประจำบ้าน: ใช้ชุดเดียวกันทั้งสรุปยอด หัวกลุ่มในรายชื่อ และตารางรายงาน */
+:root { --hsat: 72%; --hsat2: 62%; --hlit: 91%; --hac: 46%; }
+.hc { --hbgc: hsl(var(--h, 0) var(--hsat) var(--hlit)); --hbd: hsl(var(--h, 0) var(--hsat2) var(--hac)); }
+.house.hc, .gh.hc { background: var(--hbgc); border-left: 8px solid var(--hbd); }
+.gh.hc { padding-left: 12px; padding-right: 12px; }
+.rt tr.hc td { background: var(--hbgc); }
+.rt tr.hc td:first-child { border-left: 8px solid var(--hbd); font-weight: 600; }
+.lvg { display: flex; gap: 0; margin-top: 4px; }
+.lvg .mini { padding: 2px 9px; min-height: 26px; font-family: var(--font-body); font-size: 12px; }
+.lvg .mini + .mini { margin-left: -1px; }
+.lvg .mini[aria-pressed="true"] { background: var(--inv-bg); color: var(--inv-fg); font-weight: 600; }
+.lvg .mini[disabled] { opacity: 0.4; cursor: default; }
+.lvg.big { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 8px; }
+.lvg.big .mini { min-height: 38px; font-size: 14px; }
+.lvg-t { font-size: 12px; color: var(--mute); margin-top: 10px; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --hsat: 38%; --hsat2: 55%; --hlit: 20%; --hac: 58%; }
+}
+:root[data-theme="dark"] { --hsat: 38%; --hsat2: 55%; --hlit: 20%; --hac: 58%; }
 
 /* toolbar */
 .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border-block: 1px solid var(--fg); padding-block: 12px; }
@@ -250,8 +283,6 @@ body.v-readme.has-bar { padding-bottom: 56px; }
   .btn, .chip, .card, .stb { transition: background 0.12s, border-color 0.12s; }
 }
 
-[hidden]:not([hidden=until-found i]){display:none!important}
-:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 .pg{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
 .pg h1{margin:0;font-size:30px;font-weight:600;line-height:1.2}
 .pgnav{display:flex;flex-wrap:wrap;gap:8px}
@@ -269,8 +300,6 @@ body.v-readme.has-bar { padding-bottom: 56px; }
 .lv-f label{display:grid;gap:2px;font-size:12px;color:var(--mute)}
 .lv-f .field{color:var(--fg)}
 </style>
-
-</head><body>
 <div class="wrap" id="app">
   <header class="top">
     <div>
@@ -300,7 +329,7 @@ body.v-readme.has-bar { padding-bottom: 56px; }
   <div class="note" id="note" role="status"></div>
 
   <section class="summary" aria-label="สรุปยอด">
-    <div class="facts" id="facts"></div>
+    <div class="sumL"><div class="hero" id="hero"></div><div class="facts" id="facts"></div></div>
     <div class="houses" id="houses"></div>
   </section>
 
@@ -336,7 +365,9 @@ body.v-readme.has-bar { padding-bottom: 56px; }
   <div class="acts">
     <button type="button" data-bulk="present">มา</button>
     <button type="button" data-bulk="absent">ไม่มา</button>
-    <button type="button" data-bulk="leave">ลา</button>
+    <button type="button" data-bulk="leave:am">ลาช่วงเช้า</button>
+    <button type="button" data-bulk="leave:pm">ลาช่วงบ่าย</button>
+    <button type="button" data-bulk="leave:day">ลาทั้งวัน</button>
     <button type="button" data-bulk="">ล้างสถานะ</button>
   </div>
   <span class="sep"></span>
@@ -363,6 +394,7 @@ body.v-readme.has-bar { padding-bottom: 56px; }
 <script>
 const HEAD = ['คำนำหน้า','ชื่อจริง','นามสกุล','ชื่อเล่น','phone','วันเดือนปีเกิด','อายุ','ภูมิภาค','ระดับชั้น','ชื่อสถานศึกษา','ศาสนา','หมู่เลือด','ไซซ์เสื้อ','รหัสผู้ใช้','อีเมล','รูปถ่าย','ชื่อเต็ม','Facebook','Instagram','Discord ID','ที่อยู่','โรคประจำตัว','ยาที่แพ้','อาหารที่แพ้','ข้อจำกัดอาหาร','คำนำหน้าผู้ติดต่อฉุกเฉิน','ผู้ติดต่อฉุกเฉิน','เบอร์ผู้ติดต่อฉุกเฉิน','ความสัมพันธ์','น้องบ้าน','Food','Food 2','Food 3','Food 4','เกิดวันค่าย'];
 const ST = { present: 'มา', absent: 'ไม่มา', leave: 'ลา', '': 'ยังไม่เช็คชื่อ' };
+const LV = { am: 'ลาช่วงเช้า', pm: 'ลาช่วงบ่าย', day: 'ลาทั้งวัน' }, LVS = { am: 'เช้า', pm: 'บ่าย', day: 'ทั้งวัน' };
 const ST_RANK = { '': 0, absent: 1, leave: 2, present: 3 };
 
 /* ---------- ข้อมูลตัวอย่าง (สมมติทั้งหมด) ---------- */
@@ -421,6 +453,18 @@ function fullName(p) { return g(p, 'ชื่อเต็ม') || [g(p, 'คำ�
 function nick(p) { return g(p, 'ชื่อเล่น') || g(p, 'ชื่อจริง') || fullName(p); }
 function attOf(pid) { return V().att[pid] || null; }
 function stOf(pid) { const a = attOf(pid); return (a && a.status) || ''; }
+function lvOf(pid) { const a = attOf(pid); return (a && a.status === 'leave' && (LV[a.lv] ? a.lv : 'day')) || ''; }
+function houseOf(p) { return g(p, 'น้องบ้าน') || 'ไม่ระบุบ้าน'; }
+let _hueSrc = null, _hue = {};
+function hueOf(k) {
+  const P = V().people;
+  if (_hueSrc !== P) {
+    _hueSrc = P; _hue = {};
+    [...new Set(P.map(houseOf))].filter(x => !x.startsWith('ไม่ระบุ')).sort((a, b) => a.localeCompare(b, 'th', { numeric: true })).forEach((x, i) => { _hue[x] = Math.round((i * 137.5) % 360); });
+  }
+  return _hue[k];
+}
+function hStyle(k) { const h = hueOf(k); return h === undefined ? ' style="--hsat:0%;--hsat2:0%"' : ' style="--h:' + h + '"'; }
 function callsOf(pid) {
   const a = attOf(pid); if (!a || !a.calls) return [];
   return Object.keys(a.calls).filter(k => a.calls[k] > 0).map(k => [k, a.calls[k]]).sort((x, y) => x[1] - y[1]);
@@ -548,7 +592,12 @@ async function setAtt(pids, patchFn) {
 function toggleStatus(pid, st) {
   if (!canMark()) { toast(markHint()); return; }
   const next = stOf(pid) === st ? '' : st;
-  setAtt([pid], () => ({ status: next, at: Date.now() }));
+  setAtt([pid], () => ({ status: next, at: Date.now(), lv: next === 'leave' ? 'day' : '' }));
+}
+function setLv(pid, lv) {
+  if (!canMark()) { toast(markHint()); return; }
+  if (!LV[lv] || stOf(pid) !== 'leave') return;
+  setAtt([pid], () => ({ lv, at: Date.now() }));
 }
 function addCall(pid) {
   if (!canMark()) { toast(markHint()); return; }
@@ -560,13 +609,14 @@ function undoCall(pid) {
   const last = cs[cs.length - 1][0];
   setAtt([pid], () => ({ calls: { [last]: 0 } }));
 }
-function bulkStatus(st) {
+function bulkStatus(arg) {
   if (!canMark()) { toast(markHint()); return; }
   const ids = [...S.sel]; if (!ids.length) return;
+  const [st, lv0] = String(arg).split(':'), lv = st === 'leave' ? (LV[lv0] ? lv0 : 'day') : '';
   const at = Date.now();
   S.sel.clear(); S.lastSel = null;
-  setAtt(ids, () => ({ status: st, at }));
-  toast((st ? 'ตั้งเป็น "' + ST[st] + '"' : 'ล้างสถานะ') + ' ' + ids.length + ' คนแล้ว');
+  setAtt(ids, () => ({ status: st, at, lv }));
+  toast((st === 'leave' ? 'ตั้งเป็น "' + LV[lv] + '"' : st ? 'ตั้งเป็น "' + ST[st] + '"' : 'ล้างสถานะ') + ' ' + ids.length + ' คนแล้ว');
 }
 function bulkCall() {
   if (!canMark()) { toast(markHint()); return; }
@@ -777,7 +827,12 @@ function groupList(list) {
 /* ---------- render ---------- */
 function stBtns(pid, st) {
   return '<span class="stg" role="group" aria-label="สถานะ">' + [['present', 'มา'], ['absent', 'ไม่มา'], ['leave', 'ลา']].map(([k, l]) =>
-    '<button type="button" class="stb" data-st="' + k + '" data-pid="' + esc(pid) + '" aria-pressed="' + (st === k) + '">' + l + '</button>').join('') + '</span>';
+    '<button type="button" class="stb" data-st="' + k + '" data-pid="' + esc(pid) + '" aria-pressed="' + (st === k) + '">' + l + '</button>').join('') + '</span>' + (st === 'leave' ? lvHtml(pid, '') : '');
+}
+function lvHtml(pid, cls, dis) {
+  const cur = lvOf(pid);
+  return '<div class="lvg' + (cls ? ' ' + cls : '') + '" role="group" aria-label="ช่วงเวลาที่ลา">' + Object.keys(LV).map(k =>
+    '<button type="button" class="mini" data-lv="' + k + '" data-pid="' + esc(pid) + '" aria-pressed="' + (cur === k) + '"' + (dis ? ' disabled' : '') + '>' + (cls ? LV[k] : LVS[k]) + '</button>').join('') + '</div>';
 }
 function callHtml(pid, st) {
   const n = callsOf(pid).length, id = esc(pid);
@@ -827,15 +882,19 @@ function renderNote() {
   $('note').innerHTML = '<span>' + main + '</span>' + (acts ? '<div class="acts">' + acts + '</div>' : '') + extra;
 }
 function renderSummary() {
-  const P = V().people; const c = { present: 0, absent: 0, leave: 0, none: 0, follow: 0 };
-  P.forEach(p => { const s = stOf(p.pid); if (s) c[s]++; else c.none++; if (s === 'absent' && !callsOf(p.pid).length) c.follow++; });
-  $('facts').innerHTML = [[P.length, 'น้องทั้งหมด'], [c.present, 'มา'], [c.absent, 'ไม่มา'], [c.leave, 'ลา'], [c.none, 'ยังไม่เช็คชื่อ']]
-    .map(([a, b]) => '<div class="fact"><span class="n">' + a + '</span><span class="l">' + b + '</span></div>').join('') +
+  const P = V().people; const c = { present: 0, absent: 0, leave: 0, none: 0, follow: 0, am: 0, pm: 0, day: 0 };
+  P.forEach(p => { const s = stOf(p.pid); if (s) c[s]++; else c.none++; if (s === 'absent' && !callsOf(p.pid).length) c.follow++; if (s === 'leave') c[lvOf(p.pid)]++; });
+  const pct = P.length ? Math.round(c.present / P.length * 100) : 0;
+  $('hero').innerHTML = '<div class="hero-n"><b>' + c.present + '</b><span>/ ' + P.length + '</span></div><div class="hero-l">น้องที่มาแล้ว · ' + pct + '% ของน้องทั้งหมด</div><div class="hbar"><i style="width:' + pct + '%"></i></div>';
+  $('facts').innerHTML = [[c.absent, 'ไม่มา'], [c.leave, 'ลา', c.leave ? 'เช้า ' + c.am + ' · บ่าย ' + c.pm + ' · ทั้งวัน ' + c.day : ''], [c.none, 'ยังไม่เช็คชื่อ']]
+    .map(([a, b, x]) => '<div class="fact"><span class="n">' + a + '</span><span class="l">' + b + '</span>' + (x ? '<span class="sub">' + x + '</span>' : '') + '</div>').join('') +
     '<div class="fact' + (c.follow ? ' hot' : '') + '"><span class="n">' + c.follow + '</span><span class="l">ไม่มา · ยังไม่โทรตาม</span></div>';
   const m = new Map();
-  P.forEach(p => { const k = g(p, 'น้องบ้าน') || 'ไม่ระบุบ้าน'; if (!m.has(k)) m.set(k, { n: 0, p: 0, a: 0 }); const o = m.get(k); o.n++; const s = stOf(p.pid); if (s === 'present') o.p++; if (s === 'absent') o.a++; });
+  P.forEach(p => { const k = houseOf(p); if (!m.has(k)) m.set(k, { n: 0, p: 0, a: 0, l: 0, am: 0, pm: 0, day: 0 }); const o = m.get(k); o.n++; const s = stOf(p.pid); if (s === 'present') o.p++; if (s === 'absent') o.a++; if (s === 'leave') { o.l++; o[lvOf(p.pid)]++; } });
   const ks = [...m.keys()].sort((a, b) => (a.startsWith('ไม่ระบุ') - b.startsWith('ไม่ระบุ')) || a.localeCompare(b, 'th', { numeric: true }));
-  $('houses').innerHTML = ks.map(k => { const o = m.get(k); return '<div class="house"><span>' + esc(k) + '</span><span>มา ' + o.p + '/' + o.n + (o.a ? ' · ไม่มา ' + o.a : '') + '</span><div class="bar"><i style="width:' + (o.n ? o.p / o.n * 100 : 0) + '%"></i></div></div>'; }).join('');
+  const mm = (l, v, z, tot) => '<span class="m' + (v ? '' : ' z') + '"><i>' + l + '</i><b>' + v + (tot !== undefined ? '<small>/' + tot + '</small>' : '') + '</b></span>';
+  $('houses').innerHTML = ks.map(k => { const o = m.get(k); return '<div class="house hc"' + hStyle(k) + '><span class="hn">' + esc(k) + '</span><span class="hs">' + mm('มา', o.p, 0, o.n) + mm('ไม่มา', o.a) + mm('ลา', o.l) + '</span>' +
+    (o.l ? '<span class="hl">ลา: เช้า ' + o.am + ' · บ่าย ' + o.pm + ' · ทั้งวัน ' + o.day + '</span>' : '') + '</div>'; }).join('');
 }
 function renderList() {
   const v = V();
@@ -859,7 +918,7 @@ function renderList() {
     if (S.group !== 'none') {
       const c = { present: 0, absent: 0, leave: 0, none: 0 }; list.forEach(p => { const s = stOf(p.pid); if (s) c[s]++; else c.none++; });
       const all = list.every(p => S.sel.has(p.pid));
-      h += '<div class="gh"><input class="chk" type="checkbox" data-gsel="' + esc(key) + '"' + (all ? ' checked' : '') + ' aria-label="เลือกทั้งกลุ่ม ' + esc(key) + '"><button type="button" class="gtoggle" data-gtoggle="' + esc(key) + '" aria-expanded="' + !col + '"><span class="gname">' + esc(key) + '</span><span class="gcount">' + list.length + ' คน</span><span class="gstat">มา ' + c.present + ' · ไม่มา ' + c.absent + ' · ลา ' + c.leave + ' · ยังไม่เช็ค ' + c.none + '</span></button></div>';
+      h += '<div class="gh' + (S.group === 'house' ? ' hc' : '') + '"' + (S.group === 'house' ? hStyle(key) : '') + '><input class="chk" type="checkbox" data-gsel="' + esc(key) + '"' + (all ? ' checked' : '') + ' aria-label="เลือกทั้งกลุ่ม ' + esc(key) + '"><button type="button" class="gtoggle" data-gtoggle="' + esc(key) + '" aria-expanded="' + !col + '"><span class="gname">' + esc(key) + '</span><span class="gcount">' + list.length + ' คน</span><span class="gstat">มา ' + c.present + ' · ไม่มา ' + c.absent + ' · ลา ' + c.leave + ' · ยังไม่เช็ค ' + c.none + '</span></button></div>';
     }
     if (!col) {
       if (S.view === 'table') h += '<div class="tablebox"><table><thead><tr><th></th><th>ชื่อ</th><th>สถานะ</th><th>โทรตาม</th><th>ระดับชั้น</th><th>สถานศึกษา</th>' + (S.group !== 'house' ? '<th>น้องบ้าน</th>' : '') + '<th>ข้อควรระวัง</th></tr></thead><tbody>' + list.map(rowHtml).join('') + '</tbody></table></div>';
@@ -908,6 +967,7 @@ function renderDetail() {
   let h = '<div class="id"><span class="av lg">' + esc([...nick(p)][0] || '?') + '</span><div><h2>' + esc(nick(p)) + '</h2><p class="fn">' + esc(fullName(p)) + '</p>' + (sub ? '<p class="sub">' + esc(sub) + '</p>' : '') + '</div></div>';
   h += '<div class="attbox"><div class="att-h"><span class="t">เช็คชื่อ</span><span class="mute small">' + esc(sname) + '</span></div><div class="big-st">' +
     [['present', 'มา'], ['absent', 'ไม่มา'], ['leave', 'ลา']].map(([k, l]) => '<button type="button" class="stb" data-dst="' + k + '" aria-pressed="' + (st === k) + '"' + dis + '>' + l + '</button>').join('') + '</div>';
+  if (st === 'leave') h += '<div class="lvg-t">ลาช่วงไหน</div>' + lvHtml(p.pid, 'big', !mk);
   if (st === 'absent' || n) {
     h += '<div class="callrow"><div class="callstate">' + (n ? 'โทรตามแล้ว <b>' + n + '</b> ครั้ง · ล่าสุด ' + hhmm(last) : '<b>ยังไม่ได้โทรตาม</b>') + '</div><div class="callbtns"><button type="button" class="btn small solid" data-dcall="add"' + dis + '>บันทึกว่าโทรแล้ว</button>' + (n ? '<button type="button" class="btn small" data-dcall="undo"' + dis + '>ยกเลิกครั้งล่าสุด</button>' : '') + '</div></div>';
   } else h += '<div class="mute small">ถ้าน้องไม่มา จะบันทึกการโทรตามได้ที่นี่</div>';
@@ -1007,6 +1067,7 @@ $('list').addEventListener('click', e => {
   if (gs) { const ids = S.gmap[gs.getAttribute('data-gsel')] || []; ids.forEach(x => { if (gs.checked) S.sel.add(x); else S.sel.delete(x); }); renderList(); renderBar(); return; }
   const gt = t.closest('[data-gtoggle]');
   if (gt) { const k = gt.getAttribute('data-gtoggle'); if (S.collapsed.has(k)) S.collapsed.delete(k); else S.collapsed.add(k); renderList(); return; }
+  const lvb = t.closest('[data-lv]'); if (lvb) { setLv(lvb.getAttribute('data-pid'), lvb.getAttribute('data-lv')); return; }
   const st = t.closest('[data-st]'); if (st) { toggleStatus(st.getAttribute('data-pid'), st.getAttribute('data-st')); return; }
   const cl = t.closest('[data-call]'); if (cl) { if (cl.getAttribute('data-call') === 'add') addCall(cl.getAttribute('data-pid')); else undoCall(cl.getAttribute('data-pid')); return; }
   if (t.closest('label, input, button:not([data-open])')) return;
@@ -1022,6 +1083,7 @@ $('prev').addEventListener('click', () => step(-1));
 $('next').addEventListener('click', () => step(1));
 $('sheet').addEventListener('click', e => { if (e.target === $('sheet')) $('sheet').close(); });
 $('sheetBody').addEventListener('click', e => {
+  const lvb = e.target.closest('[data-lv]'); if (lvb) { setLv(S.cur, lvb.getAttribute('data-lv')); return; }
   const d = e.target.closest('[data-dst]'); if (d) { toggleStatus(S.cur, d.getAttribute('data-dst')); return; }
   const c = e.target.closest('[data-dcall]'); if (c) { if (c.getAttribute('data-dcall') === 'add') addCall(S.cur); else undoCall(S.cur); return; }
   const cp = e.target.closest('[data-copy]'); if (cp) { copyText(cp.getAttribute('data-copy'), 'คัดลอกเบอร์แล้ว'); return; }
@@ -1042,7 +1104,7 @@ window.addEventListener('drop', e => { const f = e.dataTransfer && e.dataTransfe
 Object.assign(S, { dep: {}, depHas: new Set(), unDep: null, localDep: {}, lq: '', lst: '', lh: '', leaveShell: false });
 const DST = { camp: 'ยังอยู่ในค่าย', going: 'กำลังกลับ', done: 'กลับเรียบร้อย' };
 const DEP = () => S.override ? (S.localDep[S.sid] = S.localDep[S.sid] || {}) : S.dep;
-function depOf(pid) { const d = DEP()[pid]; return d && DST[d.state] ? d : { state: 'camp', staff: '', outAt: 0, pickup: '', phone: '' }; }
+function depOf(pid) { const d = DEP()[pid]; return d && DST[d.state] ? d : { state: 'camp', staff: '', outAt: 0, pickup: '', phone: '', rel: '' }; }
 function subscribeDep() {
   if (S.unDep) { S.unDep(); S.unDep = null; }
   if (!S.db) return;
@@ -1055,7 +1117,7 @@ function subscribeDep() {
 }
 async function setDep(pid, patch) {
   const dm = DEP(), old = dm[pid];
-  dm[pid] = Object.assign({ sid: S.sid, pid, state: 'camp', staff: '', outAt: 0, pickup: '', phone: '' }, old || {}, patch);
+  dm[pid] = Object.assign({ sid: S.sid, pid, state: 'camp', staff: '', outAt: 0, pickup: '', phone: '', rel: '' }, old || {}, patch);
   renderExtra();
   if (S.override) return;
   const docId = S.sid + '_' + pid, ref = S.db.collection('dep').doc(docId), full = dm[pid];
@@ -1072,12 +1134,12 @@ const sesName = () => (S.sessions.find(x => x.id === S.sid) || {}).name || '';
 const navHtml = cur => '<div class="pgnav">' + [['roster', 'ทะเบียน'], ['report', 'รายงาน'], ['leave', 'ออกก่อนเวลา'], ['readme', 'Read me']].map(([k, l]) =>
   '<button class="btn small" type="button" data-go="' + k + '"' + (k === cur ? ' aria-current="page"' : '') + '>' + l + '</button>').join('') + '</div>';
 function repStats() {
-  const H = new Map(), T = { n: 0, pres: 0, absent: 0, leave: 0, none: 0, camp: 0, going: 0, done: 0 };
+  const H = new Map(), T = { n: 0, pres: 0, absent: 0, leave: 0, none: 0, camp: 0, going: 0, done: 0, am: 0, pm: 0, day: 0 };
   V().people.forEach(p => {
     const k = g(p, 'น้องบ้าน') || 'ไม่ระบุบ้าน'; if (!H.has(k)) H.set(k, { n: 0, pres: 0, camp: 0, going: 0, done: 0 });
     const h = H.get(k), s = stOf(p.pid); h.n++; T.n++;
     if (s === 'present') { h.pres++; T.pres++; const st = depOf(p.pid).state; h[st]++; T[st]++; }
-    else if (s === 'absent') T.absent++; else if (s === 'leave') T.leave++; else T.none++;
+    else if (s === 'absent') T.absent++; else if (s === 'leave') { T.leave++; T[lvOf(p.pid)]++; } else T.none++;
   });
   return { T, H, ks: [...H.keys()].sort(hSort) };
 }
@@ -1085,15 +1147,15 @@ const nowStr = () => { const d = new Date(); return d.toLocaleTimeString('th-TH'
 function repText() {
   const { T, H, ks } = repStats();
   const L = ['รายงานค่าย · ' + sesName(), 'เวลา ' + nowStr(),
-    'น้องทั้งหมด ' + T.n + ' คน · มา ' + T.pres + ' · ไม่มา ' + T.absent + ' · ลา ' + T.leave + ' · ยังไม่เช็คชื่อ ' + T.none,
-    'เหลือในค่าย ' + (T.camp + T.going) + ' คน (กำลังกลับ ' + T.going + ' · กลับเรียบร้อยแล้ว ' + T.done + ')', ''];
-  ks.forEach(k => { const h = H.get(k); L.push(k + ': เหลือ ' + (h.camp + h.going) + ' จาก ' + h.pres + ' คนที่มา'); });
+    'น้องทั้งหมด ' + T.n + ' คน · มา ' + T.pres + ' · ไม่มา ' + T.absent + ' · ลา ' + T.leave + (T.leave ? ' (เช้า ' + T.am + ' · บ่าย ' + T.pm + ' · ทั้งวัน ' + T.day + ')' : '') + ' · ยังไม่เช็คชื่อ ' + T.none,
+    'เหลือในค่าย ' + T.camp + ' คน (กำลังกลับ ' + T.going + ' · กลับเรียบร้อยแล้ว ' + T.done + ')', ''];
+  ks.forEach(k => { const h = H.get(k); L.push(k + ': เหลือ ' + h.camp + ' จาก ' + h.pres + ' คนที่มา'); });
   return L.join('\n');
 }
 function repCsv() {
   const { T, H, ks } = repStats(), q = v => '"' + String(v).replace(/"/g, '""') + '"';
-  const rows = [['บ้าน', 'ทั้งหมด', 'มา', 'เหลือในค่าย', 'กำลังกลับ', 'กลับเรียบร้อย']].concat(ks.map(k => { const h = H.get(k); return [k, h.n, h.pres, h.camp + h.going, h.going, h.done]; }))
-    .concat([['รวม', T.n, T.pres, T.camp + T.going, T.going, T.done]]);
+  const rows = [['บ้าน', 'ทั้งหมด', 'มา', 'เหลือในค่าย', 'กำลังกลับ', 'กลับเรียบร้อย']].concat(ks.map(k => { const h = H.get(k); return [k, h.n, h.pres, h.camp, h.going, h.done]; }))
+    .concat([['รวม', T.n, T.pres, T.camp, T.going, T.done]]);
   return '\ufeff' + ['เวลา,' + q(nowStr()), 'รอบ,' + q(sesName())].concat(rows.map(r => r.map(q).join(','))).join('\n');
 }
 async function saveCsv() {
@@ -1109,17 +1171,17 @@ function renderReport() {
       '<div><div class="clock" id="rpClock"></div><div class="mute small" id="rpDate"></div></div><div class="facts" id="rpFacts"></div>' +
       '<div class="tw"><table class="rt"><thead><tr><th>บ้าน</th><th>ทั้งหมด</th><th>มา</th><th>เหลือในค่าย</th><th>กำลังกลับ</th><th>กลับเรียบร้อย</th></tr></thead><tbody id="rpRows"></tbody><tfoot id="rpFoot"></tfoot></table></div>' +
       '<div class="toolbar"><button class="btn solid" id="rpCopy" type="button">คัดลอกเป็นข้อความ</button><button class="btn" id="rpCsv" type="button">บันทึกเป็น CSV</button></div>' +
-      '<div class="mute small">เหลือในค่าย = น้องที่ \"มา\" และยังไม่ \"กลับเรียบร้อย\" (รวมกำลังกลับ) น้องที่ไม่มา ลา หรือยังไม่เช็คชื่อ ไม่นับ · รายงานมีแค่ตัวเลข ไม่มีข้อมูลรายคน</div>';
+      '<div class="mute small">เหลือในค่าย = น้องที่ \"มา\" และ \"ยังอยู่ในค่าย\" เท่านั้น (ไม่รวมกำลังกลับ) น้องที่ไม่มา ลา หรือยังไม่เช็คชื่อ ไม่นับ · รายงานมีแค่ตัวเลข ไม่มีข้อมูลรายคน</div>';
     $('rpCopy').onclick = () => copyText(repText(), 'คัดลอกรายงานแล้ว');
     $('rpCsv').onclick = saveCsv;
   }
   $('rpSes').textContent = 'รอบเช็คชื่อ: ' + sesName();
   const { T, H, ks } = repStats();
-  $('rpFacts').innerHTML = [[T.n, 'น้องทั้งหมด'], [T.pres, 'มา'], [T.absent, 'ไม่มา'], [T.leave, 'ลา'], [T.none, 'ยังไม่เช็คชื่อ'], [T.going, 'กำลังกลับ'], [T.done, 'กลับเรียบร้อย']]
+  $('rpFacts').innerHTML = [[T.n, 'น้องทั้งหมด'], [T.pres, 'มา'], [T.absent, 'ไม่มา'], [T.leave, 'ลา' + (T.leave ? ' (เช้า ' + T.am + ' · บ่าย ' + T.pm + ' · ทั้งวัน ' + T.day + ')' : '')], [T.none, 'ยังไม่เช็คชื่อ'], [T.going, 'กำลังกลับ'], [T.done, 'กลับเรียบร้อย']]
     .map(([a, b]) => '<div class="fact"><span class="n">' + a + '</span><span class="l">' + b + '</span></div>').join('') +
-    '<div class="fact hot"><span class="n">' + (T.camp + T.going) + '</span><span class="l">เหลือในค่าย</span></div>';
-  $('rpRows').innerHTML = ks.map(k => { const h = H.get(k); return '<tr><td>' + esc(k) + '</td><td>' + h.n + '</td><td>' + h.pres + '</td><td>' + (h.camp + h.going) + '</td><td>' + h.going + '</td><td>' + h.done + '</td></tr>'; }).join('');
-  $('rpFoot').innerHTML = '<tr><td>รวม</td><td>' + T.n + '</td><td>' + T.pres + '</td><td>' + (T.camp + T.going) + '</td><td>' + T.going + '</td><td>' + T.done + '</td></tr>';
+    '<div class="fact hot"><span class="n">' + T.camp + '</span><span class="l">เหลือในค่าย</span></div>';
+  $('rpRows').innerHTML = ks.map(k => { const h = H.get(k); return '<tr class="hc"' + hStyle(k) + '><td>' + esc(k) + '</td><td>' + h.n + '</td><td>' + h.pres + '</td><td>' + h.camp + '</td><td>' + h.going + '</td><td>' + h.done + '</td></tr>'; }).join('');
+  $('rpFoot').innerHTML = '<tr><td>รวม</td><td>' + T.n + '</td><td>' + T.pres + '</td><td>' + T.camp + '</td><td>' + T.going + '</td><td>' + T.done + '</td></tr>';
   tickClock();
 }
 function tickClock() {
@@ -1173,7 +1235,7 @@ function renderLeaveList() {
     const btns = Object.keys(DST).map(k => '<button type="button" class="stb" data-dst="' + k + '" data-pid="' + id + '" aria-pressed="' + (d.state === k) + '"' + (dis ? ' disabled' : '') + '>' + DST[k] + '</button>').join('');
     const fld = (k, l, v, t, ex) => '<label>' + l + '<input class="field" type="' + (t || 'text') + '" data-f="' + k + '" data-pid="' + id + '" value="' + esc(v) + '"' + (ex || '') + (dis ? ' disabled' : '') + '></label>';
     return '<div class="lv"><div class="lv-h"><div><b>' + esc(nick(p)) + '</b> <span class="mute">' + esc(fullName(p)) + ' · ' + esc(g(p, 'น้องบ้าน') || 'ไม่ระบุบ้าน') + '</span></div><span class="stg" role="group" aria-label="สถานะการกลับ">' + btns + '</span></div>' +
-      (away ? '<div class="lv-f">' + fld('staff', 'พี่สตาฟที่พาไปส่ง', d.staff, 'text', ' list="staffList"') + fld('outAt', 'เวลาออก', hmVal(d.outAt), 'time') + fld('pickup', 'ใครมารับ', d.pickup) + fld('phone', 'เบอร์ผู้มารับ', d.phone, 'tel') + '</div>' : '') + '</div>';
+      (away ? '<div class="lv-f">' + fld('staff', 'พี่สตาฟที่พาไปส่ง', d.staff, 'text', ' list="staffList"') + fld('outAt', 'เวลาออก', hmVal(d.outAt), 'time') + fld('pickup', 'ใครมารับ', d.pickup) + fld('rel', 'ความสัมพันธ์กับน้อง', d.rel) + fld('phone', 'เบอร์ผู้มารับ', d.phone, 'tel') + '</div>' : '') + '</div>';
   }).join('') || '<div class="mute" style="padding:18px 0">ไม่พบรายการ</div>';
 }
 function renderExtra() { if (S.page === 'report') renderReport(); else if (S.page === 'leave') renderLeave(); }
@@ -1181,7 +1243,7 @@ function renderExtra() { if (S.page === 'report') renderReport(); else if (S.pag
 /* ---------- Read me / Update ---------- */
 /* เมื่ออัปเดตหน้า Read me ให้แก้เฉพาะก้อน README นี้ (updated, version และรายการในแต่ละหัวข้อ) */
 const README = {
-  updated: '19 พ.ย. 2569', version: 'v4.0',
+  updated: '20 พ.ย. 2569', version: 'v4.2',
   steps: [
     'อัปโหลดไฟล์ CSV (ทำได้เฉพาะ Editor ขึ้นไป) ดูผลตรวจไฟล์ที่แถบด้านบน แล้วกด "บันทึกเข้าระบบ"',
     'เลือกรอบเช็คชื่อที่มุมขวาบน หรือกด "เพิ่มรอบ" ถ้าเป็นรอบใหม่',
@@ -1201,6 +1263,8 @@ const README = {
       { t: 'ยังไม่มีข้ออื่น เพิ่มได้ทุกเมื่อโดยบอก Claude' }
     ] },
     { no: '3.1', title: 'สิ่งที่ Claude เข้าใจตอนนี้', items: [
+      { tag: 'มั่นใจ', t: 'น้องที่ลาช่วงเดียว (เช้าหรือบ่าย) ยังนับเป็น "ลา" ไม่นับเป็น "มา" ในอีกช่วง ถ้าต้องการนับแยกบอก Claude' },
+      { tag: 'ยังไม่แน่ใจ', hot: true, t: 'ประโยค "ให้ตรงกับ 1" ตีความว่า สีของแต่ละบ้านให้ตรงกันทุกหน้า (ถ้าหมายถึงอย่างอื่นให้บอก)' },
       { tag: 'ยืนยันแล้ว', t: 'น้องที่ "ลา" ไม่ต้องโทรตาม ระบบนับโทรตามเฉพาะน้องที่ไม่มา (ตรงกับที่ทำไว้)' },
       { tag: 'ยืนยันแล้ว', t: '"เกิดวันค่าย" คือเกิดในช่วงที่จัดค่าย' },
       { tag: 'ยืนยันแล้ว', t: 'ให้เริ่มจากหน้า Read me ก่อนงานอื่น และอัปเดตหน้านี้ทุกครั้ง' },
@@ -1211,10 +1275,10 @@ const README = {
       { tag: 'มั่นใจ', t: 'ข้อมูลเด็กมีโรคประจำตัว อาหารที่แพ้ และเบอร์ฉุกเฉิน จึงตั้งให้คนที่ดูอย่างเดียวมองไม่เห็นรายชื่อ' },
       { tag: 'ยืนยันแล้ว', t: 'สถานะการกลับมี 3 แบบ: "ยังอยู่ในค่าย" = ยังไม่กลับ, "กำลังกลับ" = อยู่ในกระบวนการ, "กลับเรียบร้อย" = พี่สตาฟส่งน้องถึงมือจริงแล้ว' },
       { tag: 'ยืนยันแล้ว', t: 'แท็บใหม่ดึงสถานะ มา / ไม่มา / ลา จากหน้าทะเบียน และต้องบันทึกว่าพี่สตาฟคนไหนเป็นคนไปส่ง' },
-      { tag: 'ยังไม่แน่ใจ', hot: true, t: '"เหลือ" เข้าใจว่า = น้องที่ "มา" และยังไม่ "กลับเรียบร้อย" (รวมกำลังกลับ) ส่วนน้องที่ยังไม่เช็คชื่อ ไม่มา หรือลา ไม่นับ' },
-      { tag: 'ยังไม่แน่ใจ', hot: true, t: 'คำถามแบบ "ตอน 15.30 เหลือกี่คน" เข้าใจว่าเริ่มจากดู "ตอนนี้" ก่อน ส่วนรายงานที่ส่งทุก 5 นาทีจะกลายเป็นประวัติย้อนหลังให้เอง' },
-      { tag: 'ยังไม่แน่ใจ', hot: true, t: 'แท็บใหม่เก็บต่อน้องหนึ่งคน: สถานะการกลับ, พี่สตาฟที่พาไปส่ง, เวลาออก, ใครมารับ โดยแสดงเฉพาะน้องที่ "มา" และผูกกับรอบเช็คชื่อที่เลือกอยู่' },
-      { tag: 'ตั้งสมมติฐาน', hot: true, t: 'พี่สตาฟ: พิมพ์เอง และเสนอชื่อที่เคยกรอกให้เลือก · "ใครมารับ": เก็บชื่อ + เบอร์ (ไม่เก็บความสัมพันธ์) · ถ้าต้องการอย่างอื่นให้บอก Claude' },
+      { tag: 'ยืนยันแล้ว', t: '"เหลือในค่าย" = น้องที่ "มา" และ "ยังอยู่ในค่าย" เท่านั้น ไม่รวมกำลังกลับ ส่วนน้องที่ยังไม่เช็คชื่อ ไม่มา หรือลา ไม่นับ' },
+      { tag: 'ยืนยันแล้ว', t: 'คำถามแบบ "ตอน 15.30 เหลือกี่คน" ดูยอด "ตอนนี้" ก่อน ส่วนประวัติย้อนหลังมาจากรายงานที่ส่งออกไป' },
+      { tag: 'ยืนยันแล้ว', t: 'แท็บใหม่เก็บต่อน้องหนึ่งคน: สถานะการกลับ, พี่สตาฟที่พาไปส่ง, เวลาออก, ใครมารับ (ชื่อ เบอร์ ความสัมพันธ์) โดยแสดงเฉพาะน้องที่ "มา" และผูกกับรอบเช็คชื่อที่เลือกอยู่' },
+      { tag: 'ยืนยันแล้ว', t: 'พี่สตาฟ: พิมพ์เอง และเสนอชื่อที่เคยกรอกให้เลือก · "ใครมารับ": เก็บชื่อ + เบอร์ + ความสัมพันธ์กับน้อง' },
       { tag: 'ยังไม่แน่ใจ', hot: true, t: 'Food ถึง Food 4 ยังไม่ทราบว่าแต่ละช่องคืออะไร ตอนนี้แสดงเป็นข้อมูลอาหารเฉยๆ' }
     ] },
     { no: '3.2', title: 'สิ่งที่ Claude ทำไปแล้ว', items: [
@@ -1230,8 +1294,18 @@ const README = {
       { tag: 'v3', t: 'หน้า Read me นี้ และปุ่มสลับระหว่าง Read me กับหน้าทะเบียน' },
       { tag: 'v3.1', t: 'อัปเดตหน้า Read me ตามคำตอบล่าสุด (ยืนยันข้อที่ถามไว้ และเพิ่มงานรายงานกับแท็บออกก่อนเวลา)' },
       { tag: 'v3.2', t: 'อัปเดตหน้า Read me: ยืนยันความหมายสถานะการกลับ (ยังอยู่ในค่าย / กำลังกลับ / กลับเรียบร้อย)' },
+      { tag: 'v4.2', t: 'ปรับหน้าสรุปยอดและเพิ่มการลาแบบแบ่งช่วง', sub: [
+        'ยอด "มา / ทั้งหมด" ตัวใหญ่ที่ด้านบนของสรุป (เช่น 8 / 160) พร้อมแถบเปอร์เซ็นต์',
+        'แถวรายบ้านใหญ่ขึ้น บอก มา / ไม่มา / ลา ครบ และใช้สีพื้นประจำบ้านชุดเดียวกันทั้งสรุปยอด หัวกลุ่มรายชื่อ และตารางรายงาน',
+        'การลาเลือกได้ 3 แบบ: ลาช่วงเช้า / ลาช่วงบ่าย / ลาทั้งวัน ทั้งรายคน ในหน้ารายละเอียด และตอนเลือกหลายคน (ถ้ากด "ลา" เฉยๆ จะเป็นลาทั้งวัน)',
+        'สรุปยอดและรายงานแสดงจำนวนลาแยกเช้า / บ่าย / ทั้งวัน',
+        'แก้แถบความคืบหน้าของบ้านที่เคยใช้ชื่อคลาสซ้ำกับแถบเช็คชื่อลอยด้านล่าง'
+      ] },
+      { tag: 'v4.1', t: 'แก้ตามคำตอบที่ยืนยัน', sub: ['"เหลือในค่าย" นับเฉพาะน้องที่มาและยังอยู่ในค่าย (ไม่รวมกำลังกลับ) ทั้งในหน้ารายงาน ข้อความที่คัดลอก และ CSV', 'แท็บออกก่อนเวลา: เพิ่มช่อง "ความสัมพันธ์กับน้อง" ของผู้มารับ'] },
       { tag: 'v4.0', t: 'หน้ารายงานเรียลไทม์ และแท็บออกก่อนเวลา', sub: ['รายงาน: นาฬิกาตอนนี้, ยอดรวม, เหลือในค่ายรายบ้าน, ปุ่มคัดลอกเป็นข้อความ และบันทึก CSV', 'ออกก่อนเวลา: แสดงเฉพาะน้องที่ "มา" ตั้งสถานะ ยังอยู่ในค่าย / กำลังกลับ / กลับเรียบร้อย พร้อมพี่สตาฟที่พาไปส่ง เวลาออก ใครมารับ และเบอร์', 'ผูกกับรอบเช็คชื่อที่เลือกอยู่ ข้อมูลเก็บในระบบและซิงก์ทุกเครื่อง'] },
       { tag: 'ตรวจแล้ว', t: 'ตรวจกฎสิทธิ์กับฐานข้อมูลจริง: คนที่ดูอย่างเดียวอ่านรายชื่อไม่ได้ ผู้ใช้ระดับ Contributor อ่านได้' },
+      { tag: 'ยังไม่ตรวจ', hot: true, t: 'ช่องช่วงเวลาที่ลา (v4.2) ยังไม่ได้ลองบันทึกลงฐานข้อมูลจริง และสีประจำบ้านยังไม่ได้ดูบนจอจริง (16 บ้านแยกสีกันออกหรือไม่)' },
+      { tag: 'ยังไม่ตรวจ', hot: true, t: 'ช่อง "ความสัมพันธ์กับน้อง" (v4.1) ยังไม่ได้ลองบันทึกลงฐานข้อมูลจริง ว่ากฎของฐานข้อมูลรับช่องใหม่หรือไม่' },
       { tag: 'ยังไม่ตรวจ', hot: true, t: 'หน้ารายงานและแท็บออกก่อนเวลาบนมือถือจริง กับหลายคนกดพร้อมกัน, หน้าตาบนมือถือจริง, เช็คชื่อหลายคนพร้อมกัน, นับโทรตามเมื่อสองคนกดพร้อมกัน, ไฟล์ที่มีน้องหลายร้อยคน' }
     ] },
     { no: '4', title: 'สิ่งที่ Claude จะทำต่อ แต่ยังไม่ได้ทำ', items: [
@@ -1296,4 +1370,5 @@ showPage('readme', false);
 renderSessions(); buildOptions(); render();
 initDb();
 </script>
+
 </body></html>
